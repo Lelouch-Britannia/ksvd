@@ -1,7 +1,3 @@
-Certainly, a well-structured README file is essential for project readability and usability. Here's how you can improve the README with a polished structure and writing:
-
----
-
 # Dictionary Learning with K-SVD and Hyperparameter Tuning
 
 ## Overview
@@ -27,6 +23,8 @@ Ensure you have the necessary MATLAB toolboxes installed:
 1. Download `ksvdbox13` and `ompbox10` toolboxes from [Technion Software Page](https://csaws.cs.technion.ac.il/~ronrubin/software.html).
 2. Obtain the Set14 dataset for training from [Kaggle Set14 Dataset](https://www.kaggle.com/datasets/ll01dm/set-5-14-super-resolution-dataset).
 
+--
+
 ## Directory Setup
 
 Adhere to the following directory structure for seamless execution:
@@ -43,21 +41,23 @@ Adhere to the following directory structure for seamless execution:
     └── ompbox10
 ```
 
+--
+
 ## Usage
 
-### GridSearchCombinedWraper
+### `GridSearchCombinedWraper.m`
 
 **Purpose**: Performs a comprehensive grid search for image processing parameters across an image dataset, saving the entire results matrix.
 
 **When to Use**: Execute this script to conduct an exhaustive grid search on multiple parameter combinations for a particular image dataset.
 
-### GridSeachWraper
+### `GridSeachWraper.m`
 
 **Purpose**: Carries out a grid search for either Low-Resolution (LR) or High-Resolution (HR) images to identify the best parameters based on a specified metric.
 
 **When to Use**: Run this script when you need to pinpoint the best image processing parameters based on a particular metric for a given image dataset.
 
-### TrainingScript.m
+### `TrainingScript.m`
 
 **Purpose**: Trains a dictionary for image reconstruction and provides quality metrics of the reconstructed images, including SSIM, PSNR, and RMSE.
 
@@ -114,6 +114,18 @@ The visual outcomes of the process are presented as:
 
    *A stem plot showcasing a sparse vector, emphasizing the power law decay characteristic of the representation.*
 
+--
+
 ## Final Notes
 
 For effective execution, ensure functions like `LowResImage`, `Training`, `SinglePatchReconstructV2`, `compressibility`, `plotResultsMatrix`, and `reconstruct_from_patches_2d` are correctly imported and referenced.
+
+---
+
+## References
+
+1. M. Aharon, M. Elad and A. Bruckstein, "K-SVD: An algorithm for designing overcomplete dictionaries for sparse representation," in *IEEE Transactions on Signal Processing*.
+2. Rubinstein, Ron & Zibulevsky, Michael & Elad, Michael. (2008). Efficient Implementation of the K-SVD Algorithm Using Batch Orthogonal Matching Pursuit.
+
+
+
