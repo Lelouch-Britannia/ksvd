@@ -66,19 +66,25 @@ Determine the quality of the reconstructed image against the original using:
 
 ### 7. **Visualization**:
 
-Visual insights are provided through three primary plots:
+Here's a visual representation of the reconstruction process:
 
-1. **Complete Image Comparison**:
-   - Display a side-by-side view of the Original LR vs Reconstructed LR followed by Original HR vs Reconstructed HR with SSIM and PSNR scores.
-   - Find this visualization at: `./Results/lenna/ImageReconstruction.png`
+1. **Reconstruction of Complete Image**: 
    
-2. **Patch-specific Comparison**:
-   - Showcase a similar side-by-side view but for a single patch extracted from the image.
-   - Refer to: `./Results/lenna/Patch.png`
+   ![Original LR vs Reconstructed LR | Original HR vs Reconstructed HR](./Results/lenna/ImageReconstruction.png) 
+
+   *Displaying the side-by-side comparison of Original LR, Reconstructed LR, Original HR, and Reconstructed HR with respective SSIM and PSNR scores.*
+
+2. **Reconstruction of a Single Patch**: 
    
-3. **Sparse Codes Analysis**:
-   - A stem plot illustrating the power law decay of a single sparse vector.
-   - This visualization can be accessed at: `./Results/lenna/SparseCodes.png`
+   ![Original vs Reconstructed Patch](./Results/lenna/Patch.png) 
+
+   *Illustrating a singular patch's reconstruction process.*
+
+3. **Sparse Vector Visualization**:
+   
+   ![Sparse Vector Stem Plot](./Results/lenna/SparseCodes.png)
+
+   *Stem plot representing a sparse vector, highlighting the power law decay.*
 
 
 ## Final Notes
