@@ -4,13 +4,6 @@ clear; close all; clc;
 % Get path of the current script
 base_path = fileparts(which('TrainingScript'));
 
-% Define toolbox paths relative to the base
-toolbox_path1 = fullfile(base_path, '..', '..', 'Toolboxes', 'ksvdbox13');
-toolbox_path2 = fullfile(base_path, '..', '..', 'Toolboxes', 'ompbox10');
-
-addpath(toolbox_path1);
-addpath(toolbox_path2);
-
 % Define directory
 dir_path = fullfile(base_path, '..', 'Set14', 'original');
 

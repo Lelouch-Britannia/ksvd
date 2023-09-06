@@ -66,7 +66,20 @@ Determine the quality of the reconstructed image against the original using:
 
 ### 7. **Visualization**:
 
-Display a side-by-side comparison of the original and reconstructed images.
+Visual insights are provided through three primary plots:
+
+1. **Complete Image Comparison**:
+   - Display a side-by-side view of the Original LR vs Reconstructed LR followed by Original HR vs Reconstructed HR with SSIM and PSNR scores.
+   - Find this visualization at: `./Results/lenna/ImageReconstruction.png`
+   
+2. **Patch-specific Comparison**:
+   - Showcase a similar side-by-side view but for a single patch extracted from the image.
+   - Refer to: `./Results/lenna/Patch.png`
+   
+3. **Sparse Codes Analysis**:
+   - A stem plot illustrating the power law decay of a single sparse vector.
+   - This visualization can be accessed at: `./Results/lenna/SparseCodes.png`
+
 
 ## Final Notes
 
