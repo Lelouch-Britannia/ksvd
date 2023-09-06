@@ -13,7 +13,7 @@ Additionally, download the Set14 dataset used for the training from [Kaggle Set1
 
 To set up the directory structure as required, please refer to the tree diagram below:
 
-![Directory Structure](./ksvd/miscellaneous/DirectoryStructure.png)
+![Directory Structure](./ksvd/Miscellaneous/DirectoryStructure.png)
 
 ### How it's solved:
 
