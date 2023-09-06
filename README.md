@@ -1,4 +1,4 @@
-# Dictionary Learning with K-SVD with Hyperparameter Tuning 
+# Dictionary Learning via K-SVD: A Hyperparameter Tuning Approach
 
 ## Overview
 
