@@ -1,93 +1,119 @@
-# Dictionary Learning with KSVD and Hyperparameter Tuning
+Certainly, a well-structured README file is essential for project readability and usability. Here's how you can improve the README with a polished structure and writing:
 
-This repository contains MATLAB scripts designed for image dictionary learning and reconstruction using the K-SVD algorithm and Orthogonal Matching Pursuit (OMP). Additionally, it provides tools for hyperparameter tuning through a grid search approach combined with 5-fold cross-validation.
+---
+
+# Dictionary Learning with K-SVD and Hyperparameter Tuning
+
+## Overview
+
+This repository contains MATLAB scripts for image dictionary learning and reconstruction using the K-SVD algorithm and Orthogonal Matching Pursuit (OMP). It also includes tools for hyperparameter tuning through a grid search approach with 5-fold cross-validation.
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Directory Setup](#directory-setup)
+- [Usage](#usage)
+    - [GridSearchCombinedWraper](#gridsearchcombinedwraper)
+    - [GridSeachWraper](#gridseachwraper)
+    - [TrainingScript.m](#trainingscriptm)
+- [Steps in TrainingScript.m](#steps-in-trainingscriptm)
+- [Final Notes](#final-notes)
+
+---
 
 ## Prerequisites
 
-Before proceeding, ensure you have the necessary toolboxes:
-
-1. Download the `ksvdbox13` and `ompbox10` toolboxes from [here](https://csaws.cs.technion.ac.il/~ronrubin/software.html).
+Ensure you have the necessary MATLAB toolboxes installed:
+1. Download `ksvdbox13` and `ompbox10` toolboxes from [Technion Software Page](https://csaws.cs.technion.ac.il/~ronrubin/software.html).
 2. Obtain the Set14 dataset for training from [Kaggle Set14 Dataset](https://www.kaggle.com/datasets/ll01dm/set-5-14-super-resolution-dataset).
 
-### Directory Setup
+## Directory Setup
 
-For smooth execution, adhere to the following directory structure:
+Adhere to the following directory structure for seamless execution:
 
 ```plaintext
 .
 ├── Ksvd
-│   ├── Images_Parameters
-│   ├── Results
-│   ├── Set14
-│   └── code
+│   ├── Images_Parameters
+│   ├── Results
+│   ├── Set14
+│   └── code
 └── ToolBoxes
     ├── ksvdbox13
     └── ompbox10
-
 ```
 
-## Steps
+## Usage
 
-### 1. **Path Setting and Initialization**:
+### GridSearchCombinedWraper
 
-- Load the user-specified image.
+**Purpose**: Performs a comprehensive grid search for image processing parameters across an image dataset, saving the entire results matrix.
 
-### 2. **User Options for Training**:
+**When to Use**: Execute this script to conduct an exhaustive grid search on multiple parameter combinations for a particular image dataset.
 
-`TrainingScript.m` provides the following options:
-1. Retrieve a pre-calculated grid search matrix.
-2. Import best parameters from prior experiments.
-3. Input training parameters manually.
+### GridSeachWraper
 
-Depending on the choice, the script fetches or prompts for parameters such as patch size, dictionary size (K), and sparsity constraints.
+**Purpose**: Carries out a grid search for either Low-Resolution (LR) or High-Resolution (HR) images to identify the best parameters based on a specified metric.
 
-### 3. **Image Preprocessing**:
+**When to Use**: Run this script when you need to pinpoint the best image processing parameters based on a particular metric for a given image dataset.
 
-- Convert RGB images to grayscale.
-- Create a low-resolution version of the high-resolution image via blurring and down-sampling.
-- Segment the image into overlapping patches for dictionary training.
+### TrainingScript.m
 
-### 4. **Dictionary Learning and Sparse Representation**:
+**Purpose**: Trains a dictionary for image reconstruction and provides quality metrics of the reconstructed images, including SSIM, PSNR, and RMSE.
 
-- If pre-defined best parameters aren't loaded, the script trains a dictionary `D` using the K-SVD algorithm.
-- Apply Orthogonal Matching Pursuit (OMP) to get sparse representations (`GAMMA`) of the patches using the dictionary `D`.
+**When to Use**: Use this script when you have image samples and you'd like to train a dictionary, possibly using hyperparameters obtained from a prior grid search.
 
-### 5. **Image Reconstruction**:
+Certainly! Here's the updated README section integrating your request:
 
-- Use sparse codes and the dictionary to reconstruct the image.
-- Rescale reconstructed image values to fit within the [0, 255] range.
+---
 
-### 6. **Evaluation**:
+# Training Process
 
-Determine the quality of the reconstructed image against the original using:
+### 1. **Path Setting and Initialization**
+Load the user-specific image for processing.
+
+### 2. **User Options for Training**
+Users can:
+- Retrieve a pre-calculated grid search matrix.
+- Load the best parameters from previous experiments.
+- Manually input training parameters.
+
+### 3. **Image Preprocessing**
+The image is segmented into overlapping patches, providing input data for dictionary training.
+
+### 4. **Dictionary Learning and Sparse Representation**
+The K-SVD algorithm is employed to train a dictionary. Subsequently, the Orthogonal Matching Pursuit (OMP) is utilized for sparse representation.
+
+### 5. **Image Reconstruction**
+The image is reconstructed using the obtained sparse codes and the trained dictionary.
+
+### 6. **Evaluation Metrics**
+The quality of the reconstructed image is evaluated using the metrics:
 - SSIM (Structural Similarity Index)
 - PSNR (Peak Signal-to-Noise Ratio)
 - RMSE (Root Mean Square Error)
 
-### 7. **Visualization**:
-
-Here's a visual representation of the reconstruction process:
+### 7. **Visualization**
+The visual outcomes of the process are presented as:
 
 1. **Reconstruction of Complete Image**: 
    
    ![Original LR vs Reconstructed LR | Original HR vs Reconstructed HR](./Results/lenna/ImageReconstruction.png) 
 
-   *Displaying the side-by-side comparison of Original LR, Reconstructed LR, Original HR, and Reconstructed HR with respective SSIM and PSNR scores.*
+   *This displays a side-by-side comparison of Original LR, Reconstructed LR, Original HR, and Reconstructed HR images, annotated with their SSIM and PSNR scores.*
 
 2. **Reconstruction of a Single Patch**: 
    
    ![Original vs Reconstructed Patch](./Results/lenna/Patch.png) 
 
-   *Illustrating a singular patch's reconstruction process.*
+   *This illustration offers insights into the reconstruction process of an individual image patch.*
 
 3. **Sparse Vector Visualization**:
    
    ![Sparse Vector Stem Plot](./Results/lenna/SparseCodes.png)
 
-   *Stem plot representing a sparse vector, highlighting the power law decay.*
-
+   *A stem plot showcasing a sparse vector, emphasizing the power law decay characteristic of the representation.*
 
 ## Final Notes
 
-To run the script effectively, ensure that functions like `LowResImage`, `Training`, `SinglePatchReconstructV2`, `compressibility`, `plotResultsMatrix`, and `reconstruct_from_patches_2d` are correctly imported and referenced.
-
+For effective execution, ensure functions like `LowResImage`, `Training`, `SinglePatchReconstructV2`, `compressibility`, `plotResultsMatrix`, and `reconstruct_from_patches_2d` are correctly imported and referenced.
