@@ -1,4 +1,4 @@
-# Dictionary Learning with K-SVD and Hyperparameter Tuning
+# Dictionary Learning with K-SVD with Hyperparameter Tuning 
 
 ## Overview
 
@@ -15,6 +15,7 @@ This repository contains MATLAB scripts for image dictionary learning and recons
 - [Steps in TrainingScript.m](#steps-in-trainingscriptm)
 - [Final Notes](#final-notes)
 
+
 ---
 
 ## Prerequisites
@@ -23,7 +24,6 @@ Ensure you have the necessary MATLAB toolboxes installed:
 1. Download `ksvdbox13` and `ompbox10` toolboxes from [Technion Software Page](https://csaws.cs.technion.ac.il/~ronrubin/software.html).
 2. Obtain the Set14 dataset for training from [Kaggle Set14 Dataset](https://www.kaggle.com/datasets/ll01dm/set-5-14-super-resolution-dataset).
 
---
 
 ## Directory Setup
 
@@ -41,7 +41,6 @@ Adhere to the following directory structure for seamless execution:
     └── ompbox10
 ```
 
---
 
 ## Usage
 
@@ -65,7 +64,6 @@ Adhere to the following directory structure for seamless execution:
 
 Certainly! Here's the updated README section integrating your request:
 
----
 
 # Training Process
 
@@ -114,13 +112,11 @@ The visual outcomes of the process are presented as:
 
    *A stem plot showcasing a sparse vector, emphasizing the power law decay characteristic of the representation.*
 
---
 
 ## Final Notes
 
 For effective execution, ensure functions like `LowResImage`, `Training`, `SinglePatchReconstructV2`, `compressibility`, `plotResultsMatrix`, and `reconstruct_from_patches_2d` are correctly imported and referenced.
 
----
 
 ## References
 
