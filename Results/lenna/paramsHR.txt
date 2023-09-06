@@ -1,0 +1,7 @@
+patch_size = [5, 5]
+K = 512
+sparsity = 10
+SSIM Score: 0.959734
+PSNR Score: 24.526835
+Compressibility: 2578264 non-zero coefficients out of 132128768 (1.95%)
+
