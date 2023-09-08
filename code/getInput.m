@@ -1,4 +1,4 @@
-function [patch_sizes, K_values, sparsities, metric, iternum] = getInput()
+function [patch_sizes, K_values, sparsities, metric, iternum] = getInput(flag)
     %GETINPUT Prompt the user to input parameters for grid search.
     %
     % [patch_sizes, K_values, sparsities, metric, iternum] = getInput() prompts the 
@@ -52,15 +52,20 @@ function [patch_sizes, K_values, sparsities, metric, iternum] = getInput()
         sparsities = str2num(sparsities);
     end
 
-    metric = input('Enter metric as a string (e.g. "RMSE"): ', 's');
-    if isempty(metric)
-        metric = defaultMetric;
-    end
-    % Check for valid metrics
-    validMetrics = {'RMSE', 'SSIM', 'PSNR', 'ALL'};
-    if ~ismember(metric, validMetrics)
-        error('Invalid metric provided. Please select from "RMSE", "SSIM", "PSNR" or "ALL"');
-        return;
+    if flag == 0
+        
+        metric = input('Enter metric as a string (e.g. "RMSE"): ', 's');
+        if isempty(metric)
+            metric = defaultMetric;
+        end
+        % Check for valid metrics
+        validMetrics = {'RMSE', 'SSIM', 'PSNR', 'ALL'};
+        if ~ismember(metric, validMetrics)
+            error('Invalid metric provided. Please select from "RMSE", "SSIM", "PSNR" or "ALL"');
+            return;
+        end
+    else
+        metric = 'ALL';
     end
 
     % Get iteration number

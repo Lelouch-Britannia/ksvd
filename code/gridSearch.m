@@ -68,17 +68,12 @@ function [best_params, best_score, D_best] = gridSearch(img, patch_sizes, K_valu
                     D = Training(X_train_fold, X_val_fold, current_K, iternum, current_sparsity, 'off');
 
                     % Do prediction and evaluation
-                    if strcmp(metric, 'RMSE') || strcmp(metric, 'PSNR')
-                        Y_pred = Prediction(D, X_val_fold, current_sparsity);
-                        Y_true = X_val_fold; % Your ground truth
-                        metricScore = evalMetric(Y_true, Y_pred, metric);
-                    elseif strcmp(metric, 'SSIM')
-                        Y_pred = Prediction(D, X, current_sparsity );
-                        img = reconstruct_from_patches_2d(X, current_patch_size, size(img));
-                        reconstructed_img = reconstruct_from_patches_2d(Y_pred, current_patch_size, size(img));
-                        metricScore = evalMetric(img, reconstructed_img, metric);
+                    Y_pred = Prediction(D, X, current_sparsity );
+                    reconstructed_img = reconstruct_from_patches_2d(Y_pred, current_patch_size, size(img));
+                    reconstructed_img_linear = (reconstructed_img - min(reconstructed_img(:))) / (max(reconstructed_img(:)) - min(reconstructed_img(:))) * 255;
+                    reconstructed_img_linear = uint8(reconstructed_img_linear);
+                    metricScore = evalMetric(img, reconstructed_img_linear, metric);
 
-                    end
 
                     avg_score = avg_score + metricScore;
                 end

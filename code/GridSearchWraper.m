@@ -6,8 +6,8 @@ clear; close all; clc;
 % This script accepts parameters when executed, with the following structure:
 % GridSearch('patch_sizes', {[a, a], [b, b]}, 'K_values', [x, y], 'sparsities', [z, w], 'metric', 'SSIM');
 
-% If you don't provide any parameter, the script will use default values.
-
+% Combined Flag
+flag = 1;
 
 % Get path of the current script
 base_path = fileparts(which('GridSearchWraper'));
@@ -57,7 +57,7 @@ else
     return;
 end
 
-[patch_sizes, K_values, sparsities, metric, iternum] = getInput();
+[patch_sizes, K_values, sparsities, metric, iternum] = getInput(flag);
 
 if strcmpi(metric, 'ALL')
     disp('Use GridSearchCombinedWraper.m script!!');

@@ -1,6 +1,9 @@
 % GridSearch.m
 clear; close all; clc;
 
+% Combined Flag
+flag = 1;
+
 % Get path of the current script
 base_path = fileparts(which('GridSearchCombinedWraper'));
 
@@ -49,10 +52,10 @@ else
     return;
 end
 
-[patch_sizes, K_values, sparsities, metric, iternum] = getInput();
+[patch_sizes, K_values, sparsities, metric, iternum] = getInput(flag);
 
 % Calling gridSearch
-results_matrix = gridSearchCombined(img, patch_sizes, K_values, sparsities, 10);
+results_matrix = gridSearchCombined(img, patch_sizes, K_values, sparsities, iternum);
     
 
 % Generate a unique filename using a timestamp

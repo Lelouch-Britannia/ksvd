@@ -66,15 +66,16 @@ function results_matrix = gridSearchCombined(img, patch_sizes, K_values, sparsit
                     % Y_pred_val = Prediction(D, X_val_fold, current_sparsity);
                     % Y_true_val = X_val_fold;
 
-                    % Do prediction and evaluation(RMSE, PSNR, SSIM)
+                    % Do prediction and evaluation(SSIM)
                     Y_pred_all = Prediction(D, X, current_sparsity);
                  
                     reconstructed_img = reconstruct_from_patches_2d(Y_pred_all, current_patch_size, size(img));
+
                     reconstructed_img_linear = (reconstructed_img - min(reconstructed_img(:))) / (max(reconstructed_img(:)) - min(reconstructed_img(:))) * 255;
                     reconstructed_img_linear = uint8(reconstructed_img_linear);
 
-                    avg_scores.RMSE = avg_scores.RMSE + evalMetric(img, reconstructed_img_linear, 'RMSE');
-                    avg_scores.PSNR = avg_scores.PSNR + evalMetric(img, reconstructed_img_linear, 'PSNR');
+                    avg_scores.RMSE = avg_scores.RMSE + evalMetric(X, Y_pred_all, 'RMSE');
+                    avg_scores.PSNR = avg_scores.PSNR + evalMetric(X, Y_pred_all, 'PSNR');
                     avg_scores.SSIM = avg_scores.SSIM + evalMetric(img, reconstructed_img_linear, 'SSIM');
                 end
 
